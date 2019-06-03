@@ -1,6 +1,6 @@
 pipeline {
     environment {
-        registry = "https://gcr.io/test-project-239803/hello-springboot"
+        registry = "test-project-239803/hello-springboot"
         registryCredential = 'gcp-test'
     }
     agent any
@@ -36,7 +36,7 @@ pipeline {
         }
         stage('Push docker image') {
             steps {
-                withDockerRegistry([ credentialsId: "gcp-test", url: "" ]) {
+                withDockerRegistry([ credentialsId: "gcp-test", url: "https://gcr.io" ]) {
                     sh 'docker push test-project-239803/hello-springboot/hello-springboot:$BUILD_NUMBER'
                 }
             }
