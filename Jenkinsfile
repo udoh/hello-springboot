@@ -36,6 +36,7 @@ pipeline {
         }
         stage('Push docker image') {
             steps {
+                withCredentials([[$class: 'FileBinding', credentialsId: "gcp", variable: 'YOUR_GCP_CREDENTIALS']])
                 withDockerRegistry([ credentialsId: "test-project-239803", url: "https://gcr.io" ]) {
                     sh 'docker push test-project-239803/hello-springboot/hello-springboot:$BUILD_NUMBER'
                 }
