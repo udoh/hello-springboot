@@ -12,5 +12,15 @@ pipeline {
                 }
             }
         }
+        tage('Publish') {
+            when {
+                branch 'master'
+            }
+            steps {
+                withDockerRegistry([ credentialsId: "dockerhub", url: "" ]) {
+                    sh 'docker push divisionone/hello-springboot:latest'
+                }
+            }
+        }
     }
 }
