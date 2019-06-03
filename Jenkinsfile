@@ -40,7 +40,7 @@ pipeline {
 //                    sh 'docker push test-project-239803/hello-springboot:$BUILD_NUMBER'
 //                }
                 script {
-                    docker.withRegistry('https://gcr.io', 'gcr:test-project-239803') {
+                    docker.withRegistry('https://gcr.io', 'test-project-239803') {
                         dockerImage.push 'latest'
                     }
                 }
