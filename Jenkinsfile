@@ -12,7 +12,7 @@ pipeline {
                 }
             }
         }
-        tage('Publish') {
+        stage('Publish') {
             when {
                 branch 'master'
             }
