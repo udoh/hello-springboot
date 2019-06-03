@@ -37,7 +37,7 @@ pipeline {
         stage('Push docker image') {
             steps {
                 withDockerRegistry([ credentialsId: "dockerhub", url: "" ]) {
-                    sh 'docker push divisionone/hello-springboot:latest'
+                    sh 'docker push divisionone/hello-springboot:$BUILD_NUMBER'
                 }
             }
         }
