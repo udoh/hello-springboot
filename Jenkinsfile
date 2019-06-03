@@ -30,7 +30,7 @@ pipeline {
         stage('Build docker image') {
             steps{
                 script {
-                    dockerImage = docker.build registry + ":$BUILD_NUMBER"
+                    def dockerImage = docker.build registry + ":$BUILD_NUMBER"
                 }
             }
         }
@@ -39,8 +39,10 @@ pipeline {
 //                withDockerRegistry([ credentialsId: "test-project-239803", url: "https://gcr.io" ]) {
 //                    sh 'docker push test-project-239803/hello-springboot:$BUILD_NUMBER'
 //                }
-                docker.withRegistry('https://gcr.io', 'gcr:test-project-239803') {
-                    dockerImage.push 'latest'
+                script {
+                    docker.withRegistry('https://gcr.io', 'gcr:test-project-239803') {
+                        dockerImage.push 'latest'
+                    }
                 }
             }
         }
