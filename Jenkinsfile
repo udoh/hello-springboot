@@ -36,7 +36,7 @@ pipeline {
         }
         stage('Push docker image') {
             steps {
-                withDockerRegistry([ credentialsId: "test-project-239803", url: "https://gcr.io" ]) {
+                withDockerRegistry([ credentialsId: "gcr:test-project-239803", url: "https://gcr.io" ]) {
                     sh 'docker push gcr.io/test-project-239803/hello-springboot:$BUILD_NUMBER'
                 }
 //                script {
