@@ -1,6 +1,6 @@
 pipeline {
     environment {
-        registry = "test-project-239803/hello-springboot"
+        registry = "gcr.io/test-project-239803/hello-springboot"
 //        registryCredential = 'gcr:test-project-239803'
     }
     agent any
